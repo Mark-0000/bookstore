@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}BOOKS{% endblock %}
+
+{% block current_user %}
+{{current_user}}
+{% endblock %}
+
+{% block content %}
+<h2>BOOKS</h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<p>{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<table class="table table-dark table-striped table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publisher</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Published Date</th>
+        <th scope="col">Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+    <tr>
+        <th scope="row">{{book['title']}}</th>
+        <td>{{book['author']}}</td>
+        <td>{{book['publisher']}}</td>
+        <td>{{book['isbn']}}</td>
+        <td>{{book['published_date']}}</td>
+        <td>
+            <form action="" method="POST">
+                <button type="submit" name="update" class="btn btn-primary" value="{{ book['_id'] }}">Update</button>
+                <button type="submit" name="delete" class="btn btn-danger" value="{{ book['_id'] }}">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

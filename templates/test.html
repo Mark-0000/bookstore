@@ -1,0 +1,23 @@
+{% extends "navbar.html" %}
+{% block title %}TESTING PAGE{% endblock %}
+
+{% block current_user %}
+Testing
+{% endblock %}
+
+{% block content %}
+
+{% if 1 == 2%}
+<p>1 is equals 2</p>
+{% else %}
+<p>1 is not equals 2</p>
+{% endif %}
+<div class="container-fluid">
+    <h2>Testing Stuffs Here</h2>
+    <button type="button" class="btn btn-primary" onclick="btn_alert()">Click Me</button>
+    <br>
+    <br>
+    <img src="{{ url_for('static', filename='images/niflheim.jpg') }}" width="100%"/>
+</div>
+<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}SIGN UP{% endblock %}
+
+{% block current_user %}
+Signup
+{% endblock %}
+
+{% block content %}
+
+<h2>SIGNUP</h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<br><p>{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="" method="post">
+
+    <div class="mb-3">
+        <label for="first_name" class="form-label">First Name:</label>
+        <input type="text" name="first_name" class="form-control" id="first_name" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="last_name" class="form-label">Last Name:</label>
+        <input type="text" name="last_name" class="form-control" id="last_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" name="email" class="form-control" id="email" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" name="password" class="form-control" id="password" required>
+    </div>
+    <div class="mb-3">
+        <label for="verify_password" class="form-label">Verify Password:</label>
+        <input type="password" name="verify_password" class="form-control" id="verify_password" required>
+    </div>
+    <span>Already have an account? <a href="http://127.0.0.1:5000/"
+                                    class="link-success">Login</a></span><br><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

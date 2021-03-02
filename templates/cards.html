@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}BOOKS{% endblock %}
+
+{% block current_user %}
+{{ current_user }}
+{% endblock %}
+
+{% block content %}
+<h2>BOOKS</h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<p>{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% for book in books %}
+<div class="card-blocks" style="display: inline-block; width: 220px; margin: 20px 20px 20px 20px">
+    <div class="card border-secondary mb-3" style="height: 350px; background-color: #e3e3e3;">
+        <div class="card-header">
+            <h6 class="card-subtitle mb-2 text-muted">{{book['author']}}</h6>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{book['title']}}</h5>
+            <p class="card-text"><b>ISBN: </b>{{book['isbn']}}</p>
+            <p class="card-text"><b>Release: </b>{{book['published_date']}}</p>
+            <p class="card-text"><b>Publisher: </b>{{book['publisher']}}</p>
+
+        </div>
+        <div class="card-footer">
+            <form action="" method="POST">
+
+                <button type="submit" name="update" class="btn" value="{{ book['_id'] }}"
+                        style="margin-right: 20px; background-color: #6884b3; color: white;" onmouseout="this.style.background='#6884b3'" onMouseOver="this.style.background='#506487'">Update
+                </button>
+                <button type="submit" name="delete" class="btn btn-danger" value="{{ book['_id'] }}">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

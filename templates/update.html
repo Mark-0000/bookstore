@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}UPDATE BOOK{% endblock %}
+
+{% block current_user %}
+{{current_user}}
+{% endblock %}
+
+{% block content %}
+<h2>UPDATE BOOK</h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<br><p>{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<b class="text-primary">BOOK ID: </b>{{my_book['_id']}}
+<form action="" method="post">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" name="title" class="form-control" id="title" value="{{ my_book['title'] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Author:</label>
+        <input type="text" name="author" class="form-control" id="author" value="{{ my_book['author'] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="publisher" class="form-label">Publisher:</label>
+        <input type="text" name="publisher" class="form-control" id="publisher" value="{{ my_book['publisher'] }}"
+               required>
+    </div>
+    <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN:</label>
+        <input type="text" name="isbn" class="form-control" id="isbn" maxlength="14" value="{{ my_book['isbn'] }}"
+               required>
+    </div>
+    <div class="mb-3">
+        <label for="published_date" class="form-label">Published Date (YYYY-MM-DD):</label>
+        <input type="text" name="published_date" class="form-control" id="published_date"
+               value="{{ my_book['published_date'] }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}
